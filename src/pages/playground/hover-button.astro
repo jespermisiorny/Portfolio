@@ -1,0 +1,33 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Jesper Misiorny">
+  <section class="section-container">
+    <h1 class="headliner">hover button</h1>
+    <p class="tagline">A simple button..</p>
+
+
+
+    <!-- Experimentkod -->
+    <div class="experiment-container">
+      <button class="hover-button">Hover me</button>
+    </div>
+
+    <pre>
+      <code>
+        {`
+        import React from "react";
+
+        export default function HoverButton() {
+          return (
+            <button className="group relative inline-flex items-center justify-center">
+              Hover me
+            </button>
+          );
+        }
+        `}
+      </code>
+    </pre>
+  </section>
+</BaseLayout>

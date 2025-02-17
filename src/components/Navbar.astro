@@ -1,0 +1,62 @@
+---
+import "../styles/navbar.css";
+
+// Få sökvägen från Astro och fallback till window.location.pathname
+let currentPath = Astro.url?.pathname || '/';
+if (typeof window !== 'undefined') {
+  currentPath = window.location.pathname; // Dynamisk kontroll för live
+}
+
+// Kontrollera sidor
+const isHomePage = currentPath === '/';
+const isPlaygroundPage = currentPath === '/playground' || currentPath === '/playground/';
+const isPlaygroundSubPage = currentPath.startsWith('/playground') && !isPlaygroundPage;
+
+// Definiera knapptext och länk
+let backButtonText = '';
+let backButtonLink = '';
+
+if (isHomePage) {
+  backButtonText = ''; // Ingen back-knapp på startsidan
+} else if (isPlaygroundPage) {
+  backButtonText = 'home'; // Playground-sidan går tillbaka till home
+  backButtonLink = '/';
+} else if (isPlaygroundSubPage) {
+  backButtonText = 'playground'; // Undersidor går tillbaka till playground
+  backButtonLink = '/playground';
+} else {
+  backButtonText = 'home'; // Default: alla andra sidor går tillbaka till home
+  backButtonLink = '/';
+}
+
+// Debugging i konsolen
+console.log("Debug Information:");
+console.log("Current Path:", currentPath);
+console.log("Is Home Page:", isHomePage);
+console.log("Is Playground Page:", isPlaygroundPage);
+console.log("Is Playground Sub Page:", isPlaygroundSubPage);
+console.log("Back Button Text:", backButtonText);
+console.log("Back Button Link:", backButtonLink);
+---
+
+<nav>
+  <div class="icon-or-back">
+    {isHomePage ? (
+      <a href="/" class="logo">
+        <img src="/favicon.png" alt="Logo" class="logo-img">
+      </a>
+    ) : (
+      <a href={backButtonLink} class="back-button">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="19" y1="12" x2="5" y2="12"></line>
+          <polyline points="12 19 5 12 12 5"></polyline>
+        </svg>
+        {backButtonText}
+      </a>
+    )}
+  </div>
+  <ul class="nav-links">
+    <li><a href="/about" class={currentPath === '/about' ? 'active' : ''}>about</a></li>
+    <li><a href="/playground" class={isPlaygroundPage ? 'active' : ''}>playground</a></li>
+  </ul>
+</nav>

@@ -1,0 +1,43 @@
+/* Navbar styling */
+nav {
+  display: flex;
+  width: 100%;
+  justify-content: space-between; /* Sprid elementen till vänster och höger */
+  align-items: center;
+  padding: 1rem 1rem;
+  background-color: transparent;
+}
+
+/* Vänsterställd ikon eller tillbaka-knapp */
+.icon-or-back {
+  flex: 0 1 auto; /* Fixera bredden på innehållet här */
+}
+
+.back-button {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem; /* Mellanrum mellan pil och text */
+  color: #444; /* Standardfärg */
+  font-size: 1rem;
+  text-decoration: none;
+  transition:
+    color 0.2s ease,
+    text-decoration 0.2s ease; /* Smooth övergångar */
+}
+
+.back-button:hover {
+  color: #00997e; /* Färg vid hover */
+  text-decoration: underline; /* Understrykning vid hover */
+}
+
+.back-button svg {
+  width: 16px; /* Ikonens storlek */
+  height: 16px;
+  fill: none;
+  stroke: currentColor; /* Ärva färg från texten */
+  transition: transform 0.2s ease; /* Liten animation vid hover */
+}
+
+.back-button:hover svg {
+  transform: translateX(-2px); /* Flytta pilen lite till vänster vid hover */
+}

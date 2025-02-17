@@ -1,0 +1,9 @@
+---
+const currentPath = Astro.url.pathname;
+if (currentPath === '/') {
+  return null;
+}
+---
+<div class="home-button">
+  <a href="/">Home</a>
+</div>

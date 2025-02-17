@@ -1,0 +1,43 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+// Array med experiment
+const experiments = [
+  {
+    id: 1,
+    title: "Placeholder",
+    description: "A placeholder text",
+    link: "/playground/hover-button",
+  },
+  {
+    id: 2,
+    title: "Placeholder",
+    description: "A placeholder text",
+    link: "/playground/hover-button",
+  },
+  {
+    id: 3,
+    title: "Placeholder",
+    description: "A placeholder text",
+    link: "/playground/hover-button",
+  },
+];
+---
+
+<BaseLayout title="Jesper Misiorny">
+  <section class="section-container">
+    <!-- Header -->
+    <h1 class="headliner">playground</h1>
+    <p class="tagline">small experiments and prototypes I’ve worked on.</p>
+
+    <!-- Lista med experiment -->
+    <div class="projects-section">
+      {experiments.map((experiment) => (
+        <a href={experiment.link} class="project-item">
+          <h3 class="project-title">{experiment.title}</h3>
+          <p class="project-description">{experiment.description}</p>
+        </a>
+      ))}
+    </div>
+  </section>
+</BaseLayout>
